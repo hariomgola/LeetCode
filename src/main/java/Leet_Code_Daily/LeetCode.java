@@ -1,6 +1,7 @@
 package Leet_Code_Daily;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LeetCode {
@@ -8,6 +9,8 @@ public class LeetCode {
         LeetCode ls = new LeetCode();
         // ls.new _1722().run();
         // ls.new _2452().run();
+        // ls.new _2615().run();
+        
     }
 
     class _1722 {
@@ -57,6 +60,50 @@ public class LeetCode {
             }
             System.out.println(_ls.toString());
             return _ls;
+        }
+    }
+
+    class _2615 {
+        public void run() {
+            String url = "https://leetcode.com/problems/words-within-two-edits-of-dictionary/description/";
+            _2615 cs = new _2615();
+            cs.distance(new int[]{1, 3, 1, 1, 2});
+            // cs.distance(new int[]{0, 5, 3});
+        }
+
+        public long[] distance(int[] nums) {
+            HashMap<Integer, ArrayList<Integer>> _hs = new HashMap<>();
+            long[] _nums = new long[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                if (_hs.get(nums[i]) == null) {
+                    ArrayList<Integer> list = new ArrayList<>();
+                    list.add(i);
+                    _hs.put(nums[i], list);
+                } else {
+                    _hs.get(nums[i]).add(i);
+                }
+            }
+
+            System.out.println(_hs.toString());
+
+            for (int i = 0; i < nums.length; i++) {
+                if (_hs.get(nums[i]) == null || _hs.get(nums[i]).size() == 1) {
+                    _nums[i] = 0L;
+                } else {
+                    ArrayList<Integer> _inData = _hs.get(nums[i]);
+                    Long _lnData = 0l;
+                    for (Integer val : _inData) {
+                        if (val != i) {
+                            _lnData += Math.abs(i - val);
+                            System.out.println(i + "|" + val);
+                        }
+
+
+                    }
+                    _nums[i] = _lnData;
+                }
+            }
+            return _nums;
         }
     }
 }
