@@ -10,7 +10,7 @@ public class LeetCode {
         // ls.new _1722().run();
         // ls.new _2452().run();
         // ls.new _2615().run();
-        
+        // ls.new _1559().run();
     }
 
     class _1722 {
@@ -104,6 +104,18 @@ public class LeetCode {
                 }
             }
             return _nums;
+        }
+    }
+
+    class _1559 {
+        public void run() {
+            String url = "https://leetcode.com/problems/detect-cycles-in-2d-grid/description/";
+            _1559 cs = new _1559();
+            cs.containsCycle(new char[][]{});
+        }
+
+        public boolean containsCycle(char[][] grid) {
+            return true;
         }
     }
 }
