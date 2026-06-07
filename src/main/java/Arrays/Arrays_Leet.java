@@ -108,16 +108,10 @@ public class Arrays_Leet {
         }
 
         public int removeDuplicates(int[] nums) {
-            int pointer = 1;
-            for (int i = 1; i < nums.length; i++) {
-                if (nums[i] != nums[i - 1]) {
-                    // if(){
-
-                    // } else {
-
-                    // }
-                    // nums[pointer++] = nums[i];
-                    // pointerCount 
+            int pointer = 2;
+            for (int i = 2; i < nums.length; i++) {
+                if (nums[i] != nums[pointer - 2]) {
+                    nums[pointer++]=nums[i];
                 }
             }
             return pointer;
