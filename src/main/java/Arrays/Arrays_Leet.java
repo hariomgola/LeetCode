@@ -9,14 +9,16 @@ public class Arrays_Leet {
         Arrays_Leet ls = new Arrays_Leet();
         // ls.new _288().run();
         // ls.new _27().run();
-        ls.new _1470().run();
+        // ls.new _1470().run();
+        // ls.new _26().run();
+        ls.new _80().run();
     }
 
     class _288 {
         public void run() {
             String url = "https://leetcode.com/problems/move-zeroes/";
             Arrays_Leet._288 cs = new Arrays_Leet._288();
-            cs.moveZeroes(new int[]{0, 1, 0, 3, 12});
+            cs.moveZeroes(new int[] { 0, 1, 0, 3, 12 });
         }
 
         public void moveZeroes(int[] nums) {
@@ -37,8 +39,8 @@ public class Arrays_Leet {
         public void run() {
             String url = "https://leetcode.com/problems/remove-element/description/";
             Arrays_Leet._27 cs = new Arrays_Leet._27();
-            cs.removeElement(new int[]{3, 2, 2, 3}, 3);
-            cs.removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2);
+            cs.removeElement(new int[] { 3, 2, 2, 3 }, 3);
+            cs.removeElement(new int[] { 0, 1, 2, 2, 3, 0, 4, 2 }, 2);
         }
 
         public int removeElement(int[] nums, int val) {
@@ -62,9 +64,8 @@ public class Arrays_Leet {
         public void run() {
             String url = "http://leetcode.com/problems/shuffle-the-array/";
             Arrays_Leet._1470 cs = new Arrays_Leet._1470();
-            //                     0  1  2  3  4  5
-            cs.shuffle(new int[]{2, 5, 1, 3, 4, 7}, 3);
-            // cs.shuffle(new int[] { 1, 2, 3, 4, 4, 3, 2, 1 }, 4);
+            cs.shuffle(new int[] { 2, 5, 1, 3, 4, 7 }, 3);
+            cs.shuffle(new int[] { 1, 2, 3, 4, 4, 3, 2, 1 }, 4);
         }
 
         public int[] shuffle(int[] nums, int n) {
@@ -79,4 +80,48 @@ public class Arrays_Leet {
         }
 
     }
+
+    class _26 {
+        public void run() {
+            String url = "https://leetcode.com/problems/remove-duplicates-from-sorted-array/";
+            Arrays_Leet._26 cs = new Arrays_Leet._26();
+            cs.removeDuplicates(new int[] { 1, 1, 2 });
+            cs.removeDuplicates(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 });
+        }
+
+        public int removeDuplicates(int[] nums) {
+            int pointer = 1;
+            for (int i = 1; i < nums.length; i++) {
+                if (nums[i] != nums[i - 1]) {
+                    nums[pointer++] = nums[i];
+                }
+            }
+            return pointer;
+        }
+    }
+
+    class _80 {
+        public void run() {
+            String url = "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/";
+            Arrays_Leet._80 cs = new Arrays_Leet._80();
+            cs.removeDuplicates(new int[] { 1, 1, 1, 2, 2, 3 });
+        }
+
+        public int removeDuplicates(int[] nums) {
+            int pointer = 1;
+            for (int i = 1; i < nums.length; i++) {
+                if (nums[i] != nums[i - 1]) {
+                    // if(){
+
+                    // } else {
+
+                    // }
+                    // nums[pointer++] = nums[i];
+                    // pointerCount 
+                }
+            }
+            return pointer;
+        }
+    }
+
 }
