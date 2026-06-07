@@ -11,7 +11,8 @@ public class Arrays_Leet {
         // ls.new _27().run();
         // ls.new _1470().run();
         // ls.new _26().run();
-        ls.new _80().run();
+        // ls.new _80().run();
+        ls.new _189().run();
     }
 
     class _288 {
@@ -111,11 +112,22 @@ public class Arrays_Leet {
             int pointer = 2;
             for (int i = 2; i < nums.length; i++) {
                 if (nums[i] != nums[pointer - 2]) {
-                    nums[pointer++]=nums[i];
+                    nums[pointer++] = nums[i];
                 }
             }
             return pointer;
         }
     }
 
+    class _189 {
+        public void run() {
+            String url = "https://leetcode.com/problems/rotate-array/";
+            Arrays_Leet._189 cs = new Arrays_Leet._189();
+            cs.rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+        }
+
+        public void rotate(int[] nums, int k) {
+
+        }
+    }
 }
