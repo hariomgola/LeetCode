@@ -12,8 +12,11 @@ public class Arrays_Leet {
         // ls.new _1470().run();
         // ls.new _26().run();
         // ls.new _80().run();
-        ls.new _189().run();
+        // ls.new _189().run();
+        ls.new _485().run();
     }
+
+    // ************************** Array Manipulation *************************
 
     class _288 {
         public void run() {
@@ -123,11 +126,58 @@ public class Arrays_Leet {
         public void run() {
             String url = "https://leetcode.com/problems/rotate-array/";
             Arrays_Leet._189 cs = new Arrays_Leet._189();
+            // cs.rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
             cs.rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+            /*
+             * (Reverse the whole array)
+             * 7 6 5 4 3 2 1 // let suppose if k3 is reverse the first k element and reverse
+             * 5 6 7 1 2 3 4 // Here is the final answer
+             */
         }
 
         public void rotate(int[] nums, int k) {
+            int arrLength = nums.length;
+            k = k % arrLength; // imp as if k > n like array is 1 k =2 so it will fail in these change this
+                               // statement change k to 0
+                               // if k>= n it doesn't harm anything it will return the same value
+            reverseHelper(nums, 0, arrLength - 1);
+            reverseHelper(nums, 0, k - 1);
+            reverseHelper(nums, k, arrLength - 1);
+            System.out.println(Arrays.toString(nums));
 
+        }
+
+        private void reverseHelper(int[] nums, int s, int l) {
+            while (s < l) {
+                int temp = nums[s];
+                nums[s++] = nums[l];
+                nums[l--] = temp;
+            }
+        }
+
+    }
+
+    // ************************** Finding & Counting *************************
+
+    class _485 {
+        public void run() {
+            String url = "https://leetcode.com/problems/max-consecutive-ones/";
+            Arrays_Leet._485 cs = new Arrays_Leet._485();
+            cs.findMaxConsecutiveOnes(new int[] { 1, 1, 0, 1, 1, 1 });
+        }
+
+        public int findMaxConsecutiveOnes(int[] nums) {
+            int maxCounter = 0;
+            int startCounter = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] == 1) {
+                    startCounter++;
+                } else {
+                    startCounter = 0;
+                }
+                maxCounter = maxCounter > startCounter ? maxCounter : startCounter;
+            }
+            return maxCounter;
         }
     }
 }
