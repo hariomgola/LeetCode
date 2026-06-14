@@ -180,4 +180,20 @@ public class Arrays_Leet {
             return maxCounter;
         }
     }
+
+    class _414 {
+        public void run() {
+            String url = "https://leetcode.com/problems/max-consecutive-ones/";
+            Arrays_Leet._414 cs = new Arrays_Leet._414();
+            cs.thirdMax(new int[] { 3, 2, 1 });
+        }
+
+        public int thirdMax(int[] nums) {
+            int counter = 0;
+            for (int i = 0; i < nums.length; i++) {
+                // will do a reverse sort and take 0+2 from it
+            }
+            return nums[counter - 2];
+        }
+    }
 }
