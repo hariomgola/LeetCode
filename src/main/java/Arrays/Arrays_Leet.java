@@ -20,7 +20,8 @@ public class Arrays_Leet {
         // ls.new _414().run();
         // ls.new missing_ranges().run();
         // ls.new _169().run();
-        ls.new _229().run();
+        // ls.new _229().run();
+        ls.new _121().run();
     }
 
     // ************************** Array Manipulation *************************
@@ -287,10 +288,10 @@ public class Arrays_Leet {
             Arrays.sort(nums);
             System.out.println(Arrays.toString(nums));
             // if (nums.length <= 2) {
-            //     for (int num : nums) {
-            //         result.add(num);
-            //     }
-            //     return result;
+            // for (int num : nums) {
+            // result.add(num);
+            // }
+            // return result;
             // }
             int threshold = nums.length / 3;
             int lastpointer = 0;
@@ -303,6 +304,30 @@ public class Arrays_Leet {
                 }
             }
             return result;
+        }
+    }
+
+    class _121 {
+        public void run() {
+            String url = "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/";
+            Arrays_Leet._121 cs = new Arrays_Leet._121();
+            cs.maxProfit(new int[] { 7, 1, 5, 3, 6, 4 });
+            cs.maxProfit(new int[] { 7, 6, 4, 3, 1 });
+        }
+
+        public int maxProfit(int[] prices) {
+            int buy = Integer.MAX_VALUE;
+            int maxProfit = 0;
+            for (int price : prices) {
+                if (price < buy) {
+                    buy = price;
+                }
+                if (price - buy > maxProfit) {
+                    maxProfit = price - buy;
+                }
+            }
+            System.out.println(maxProfit);
+            return maxProfit;
         }
     }
 }
