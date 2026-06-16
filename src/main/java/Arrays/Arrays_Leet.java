@@ -2,7 +2,10 @@ package Arrays;
 
 import Leet_Code_Daily.LeetCode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Arrays_Leet {
     static void main() {
@@ -13,7 +16,11 @@ public class Arrays_Leet {
         // ls.new _26().run();
         // ls.new _80().run();
         // ls.new _189().run();
-        ls.new _485().run();
+        // ls.new _485().run();
+        // ls.new _414().run();
+        // ls.new missing_ranges().run();
+        // ls.new _169().run();
+        ls.new _229().run();
     }
 
     // ************************** Array Manipulation *************************
@@ -185,15 +192,109 @@ public class Arrays_Leet {
         public void run() {
             String url = "https://leetcode.com/problems/max-consecutive-ones/";
             Arrays_Leet._414 cs = new Arrays_Leet._414();
-            cs.thirdMax(new int[] { 3, 2, 1 });
+            // cs.thirdMax(new int[] { 3, 2, 1 });
+            cs.thirdMax(new int[] { 5, 2, 8, 2, 9, 1, 5, 7, 3, 8, 4, 2, 6, 5, 9 });
         }
 
         public int thirdMax(int[] nums) {
             int counter = 0;
             for (int i = 0; i < nums.length; i++) {
-                // will do a reverse sort and take 0+2 from it
+                // will do a quick sort and take 0+2 from it
             }
             return nums[counter - 2];
+        }
+    }
+
+    class missing_ranges {
+        public void run() {
+            String url = "https://algomaster.io/learn/dsa/missing-ranges";
+            /**
+             * You are given an inclusive range [lower, upper] and a sorted unique integer
+             * array nums, where all elements are within the inclusive range.
+             * 
+             * A number x is considered missing if x is in the range [lower, upper] and x is
+             * not in nums.
+             * 
+             * Return the shortest sorted list of ranges that exactly covers all the missing
+             * numbers. That is, no element of nums is included in any of the ranges, and
+             * each missing number is covered by one of the ranges.
+             */
+            Arrays_Leet.missing_ranges cs = new Arrays_Leet.missing_ranges();
+            cs.findMissingRanges(new int[] { 0, 1, 3, 50, 75 }, 0, 99);
+            cs.findMissingRanges(new int[] { -1 }, -1, -1);
+            cs.findMissingRanges(new int[] { 1, 3, 5, 7 }, 0, 9);
+        }
+
+        public List<List<Integer>> findMissingRanges(int[] nums, int lower, int upper) {
+            List<List<Integer>> _range = new ArrayList<>();
+            for (int i = 0; i < nums.length; i++) {
+                if (i == 0) {
+                    if (lower != nums[i] || lower + 1 <= nums[i]) {
+                        _range.add(Arrays.asList(lower + 1, nums[i] - 1));
+                        // System.out.println(nums[i]);
+                    }
+                    continue;
+                }
+                if (i == (nums.length - 1)) {
+                    if (nums[i] != upper || nums[i] + 1 <= upper) {
+                        _range.add(Arrays.asList(nums[i] + 1, upper - 1));
+                        // System.out.println(nums[i]);
+                    }
+                    continue;
+                }
+                if (nums[i] + 1 != nums[i + 1]) {
+                    _range.add(Arrays.asList(nums[i] + 1, nums[i + 1] - 1));
+                    // System.out.println(nums[i] + " = " + nums[i + 1]);
+                }
+            }
+            System.out.println(_range);
+            return _range;
+        }
+    }
+
+    class _169 {
+        public void run() {
+            String url = "https://leetcode.com/problems/majority-element/";
+            Arrays_Leet._169 cs = new Arrays_Leet._169();
+            cs.majorityElement(new int[] { 3, 2, 3 });
+            cs.majorityElement(new int[] { 2, 2, 1, 1, 1, 2, 2 });
+        }
+
+        public int majorityElement(int[] nums) {
+            HashMap<Integer, Integer> _hs = new HashMap<>();
+            _hs.put(null, nums[0]);
+            for (int i = 0; i < nums.length; i++) {
+                _hs.put(nums[i], _hs.containsKey(nums[i]) ? (_hs.get(nums[i]) + 1) : 1);
+                if (_hs.get(nums[i]) > _hs.get(_hs.get(null))) {
+                    _hs.put(null, nums[i]);
+                }
+            }
+            return _hs.get(null);
+        }
+    }
+
+    class _229 {
+        public void run() {
+            String url = "https://leetcode.com/problems/majority-element-ii/";
+            Arrays_Leet._229 cs = new Arrays_Leet._229();
+            cs.majorityElement(new int[] { 3, 2, 3 });
+            cs.majorityElement(new int[] { 2, 2, 1, 1, 1, 2, 2 });
+        }
+
+        public List<Integer> majorityElement(int[] nums) {
+            List<Integer> result = new ArrayList<>();
+            if (nums.length <= 2) {
+                for (int num : nums) {
+                    result.add(num);
+                }
+                return result;
+
+            } else {
+                Arrays.sort(nums);
+                int threshold = nums.length / 3;
+                int lastpointer = 0;
+                return null;
+            }
         }
     }
 }
