@@ -279,22 +279,30 @@ public class Arrays_Leet {
             Arrays_Leet._229 cs = new Arrays_Leet._229();
             cs.majorityElement(new int[] { 3, 2, 3 });
             cs.majorityElement(new int[] { 2, 2, 1, 1, 1, 2, 2 });
+            cs.majorityElement(new int[] { 2, 2 }); // edge case to remove if condition
         }
 
         public List<Integer> majorityElement(int[] nums) {
             List<Integer> result = new ArrayList<>();
-            if (nums.length <= 2) {
-                for (int num : nums) {
-                    result.add(num);
+            Arrays.sort(nums);
+            System.out.println(Arrays.toString(nums));
+            // if (nums.length <= 2) {
+            //     for (int num : nums) {
+            //         result.add(num);
+            //     }
+            //     return result;
+            // }
+            int threshold = nums.length / 3;
+            int lastpointer = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (i == nums.length - 1 || nums[i] != nums[i + 1]) {
+                    if (i - lastpointer > threshold - 1) {
+                        result.add(nums[i]);
+                    }
+                    lastpointer = i + 1;
                 }
-                return result;
-
-            } else {
-                Arrays.sort(nums);
-                int threshold = nums.length / 3;
-                int lastpointer = 0;
-                return null;
             }
+            return result;
         }
     }
 }
